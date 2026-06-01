@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+.env*.local
+*.tsbuildinfo
+
+# Large source image folders (optimized copies live in public/)
+Everest School Image/
+Sunrise College Image/

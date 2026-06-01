@@ -1,0 +1,35 @@
+.sunrise-theme {
+  --sunrise-navy: #0a1628;
+  --sunrise-navy-mid: #132238;
+  --sunrise-blue: #1e40af;
+  --sunrise-gold: #f59e0b;
+  --sunrise-gold-light: #fbbf24;
+  --sunrise-orange: #ea580c;
+  --sunrise-surface: #ffffff;
+  --sunrise-muted: #64748b;
+  --sunrise-ink: #0f172a;
+}
+
+.sunrise-gradient-text {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #ea580c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sunrise-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sunrise-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sunrise-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(10, 22, 40, 0.2);
+}

@@ -1,0 +1,39 @@
+.everest-theme {
+  --everest-navy: #0c2340;
+  --everest-navy-light: #1a3a5c;
+  --everest-gold: #c9a227;
+  --everest-gold-light: #e8c547;
+  --everest-teal: #0d9488;
+  --everest-surface: #f8fafc;
+  --everest-ink: #0f172a;
+  --everest-muted: #64748b;
+}
+
+.everest-hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #f0f7ff 0%,
+    #ffffff 45%,
+    #f0fdf9 100%
+  );
+}
+
+.everest-gradient-text {
+  background: linear-gradient(135deg, var(--everest-navy) 0%, var(--everest-teal) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.everest-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.everest-card-glow:hover {
+  box-shadow:
+    0 0 0 1px rgba(13, 148, 136, 0.2),
+    0 20px 40px -12px rgba(12, 35, 64, 0.15);
+}
