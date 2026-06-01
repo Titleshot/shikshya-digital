@@ -101,9 +101,45 @@ const styles = `
   }
   .box.green { background: #ccffcc; border-color: blue; }
   .box h3 { margin: 0 0 5px; color: #800080; font-size: 16px; }
+  .section-title {
+    background: #0066cc;
+    color: yellow;
+    padding: 6px 10px;
+    font-size: 18px;
+    margin: 20px 0 8px;
+    border: 2px solid red;
+    text-align: center;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin: 10px 0;
+  }
+  .gallery-grid .img.placeholder { height: 90px; font-size: 10px; }
+  .ramble {
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: justify;
+    border: 1px dotted #666;
+    padding: 8px;
+    background: #fffacd;
+    margin: 10px 0;
+  }
+  .fake-link { color: blue; text-decoration: underline; cursor: pointer; }
+  .fake-link:visited { color: purple; }
+  .center-banner {
+    text-align: center;
+    background: red;
+    color: white;
+    padding: 20px;
+    font-size: 20px;
+    margin: 15px 0;
+    border: 4px double yellow;
+  }
   img.placeholder {
     width: 100%;
-    height: 120px;
+    height: 140px;
     background: #999;
     border: 2px solid #000;
     display: flex;
@@ -220,6 +256,8 @@ export default function TypicalSchoolPage() {
         <a href="#">ADMISSION</a>
         <a href="#">CONTACT</a>
         <a href="#">STAFF LOGIN</a>
+        <a href="#">OLD WEBSITE</a>
+        <a href="#">FACEBOOK</a>
       </nav>
 
       <div className="marquee-wrap">
@@ -295,6 +333,251 @@ export default function TypicalSchoolPage() {
         </table>
 
         <div className="img.placeholder">[ PRINCIPAL SIR PHOTO ]</div>
+
+        <h2 className="section-title">::: हाम्रो विद्यालयको बारेमा :::</h2>
+        <div className="ramble">
+          <p>
+            Everest Model School २०६५ मा स्थापना भएको हो। हामी विश्वास गर्छौं कि
+            शिक्षा भनेको केवल किताब पढ्नु मात्र होइन। हाम्रो विद्यालयमा विद्यार्थीहरूले
+            अनुशासन, नैतिकता, र पनि पढाइ पनि सिक्छन्। हाम्रो संस्थापक श्री
+            अज्ञात महाराजले भन्नुभएको थियो — &quot;पढ, लेख, र सफल बन&quot; — यो नै
+            हाम्रो आदर्श वाक्य हो।
+          </p>
+          <p style={{ marginTop: 10 }}>
+            हाम्रो विद्यालयमा ५०० भन्दा बढी विद्यार्थी अध्ययनरत छन् (लगभग)।
+            हामीसँग ३० जना शिक्षक छन् (कति जना full time हो भन्ने थाहा छैन)।
+            हाम्रो भवन ४ तले छ र खेल मैदान पनि छ — ठूलो हो कि सानो भन्ने कुरा
+            भ्रमण गरेर हेर्नुहोस्।
+          </p>
+        </div>
+
+        <div className="center-banner blink">
+          ★ ADMISSION OPEN 2082 ★<br />
+          <span style={{ fontSize: 14 }}>First come first serve!!!</span>
+        </div>
+
+        <h2 className="section-title">::: सुविधाहरू (FACILITIES) :::</h2>
+        <div className="side-by-side">
+          <div className="box">
+            <h3>📚 Library</h3>
+            <div className="img.placeholder">[ LIBRARY PHOTO ]</div>
+            <p>पुस्तकहरू छन्। धेरै पुराना।</p>
+          </div>
+          <div className="box green">
+            <h3>💻 Computer Lab</h3>
+            <div className="img.placeholder">[ 10 COMPUTERS ]</div>
+            <p>Windows XP installed (maybe)</p>
+          </div>
+        </div>
+        <div className="side-by-side">
+          <div className="box green">
+            <h3>🔬 Science Lab</h3>
+            <div className="img.placeholder">[ LAB PHOTO ]</div>
+            <p>कहिलेकाही प्रयोग हुन्छ</p>
+          </div>
+          <div className="box">
+            <h3>⚽ Playground</h3>
+            <div className="img.placeholder">[ FIELD ]</div>
+            <p>Football, cricket, kabaddi</p>
+          </div>
+        </div>
+        <div className="img.placeholder" style={{ height: 180 }}>
+          [ CANTEEN / TUCK SHOP — MENU NOT AVAILABLE ONLINE ]
+        </div>
+
+        <h2 className="section-title">::: ग्यालेरी (PHOTOS) :::</h2>
+        <p style={{ fontSize: 11, color: "gray", textAlign: "center" }}>
+          Click to enlarge (does not work)
+        </p>
+        <div className="gallery-grid">
+          {[
+            "Sports Day 2079",
+            "Annual Day",
+            "Picnic",
+            "Class 5",
+            "Teachers",
+            "Award",
+            "Tour",
+            "Exam",
+            "Cultural",
+          ].map((label) => (
+            <div key={label} className="img.placeholder">
+              [{label}]
+            </div>
+          ))}
+        </div>
+        <p style={{ fontSize: 10, textAlign: "center" }}>
+          More photos coming soon... please check back in 2083
+        </p>
+
+        <h2 className="section-title">::: डाउनलोडहरू :::</h2>
+        <ul style={{ fontSize: 13, lineHeight: 2 }}>
+          <li>
+            <span className="fake-link">Admission Form.pdf</span> — (file not found)
+          </li>
+          <li>
+            <span className="fake-link">School Prospectus 2069.pdf</span> — outdated
+          </li>
+          <li>
+            <span className="fake-link">Fee Structure.doc</span> — open in Word 2003
+          </li>
+          <li>
+            <span className="fake-link">Holiday List 2080.pdf</span>
+          </li>
+          <li>
+            <span className="fake-link">Uniform Size Chart.jpg</span> — low quality
+          </li>
+        </ul>
+
+        <h2 className="section-title">::: कार्यक्रम तालिका :::</h2>
+        <table className="info">
+          <thead>
+            <tr>
+              <th>मिति</th>
+              <th>कार्यक्रम</th>
+              <th>समय</th>
+              <th>स्थान</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>२०८१/१०/१५</td>
+              <td>Parent Meeting</td>
+              <td>???</td>
+              <td>Hall</td>
+            </tr>
+            <tr>
+              <td>२०८१/११/०१</td>
+              <td>Annual Exam</td>
+              <td>10-4</td>
+              <td>Classrooms</td>
+            </tr>
+            <tr>
+              <td>२०८१/१२/??</td>
+              <td>Winter Vacation</td>
+              <td>—</td>
+              <td>Home</td>
+            </tr>
+            <tr>
+              <td>TBA</td>
+              <td>Sports Week</td>
+              <td>TBA</td>
+              <td>Ground</td>
+            </tr>
+            <tr>
+              <td>TBA</td>
+              <td>Result Day</td>
+              <td>Morning</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 className="section-title">::: शिक्षकहरू (STAFF) :::</h2>
+        <table className="info">
+          <thead>
+            <tr>
+              <th>नाम</th>
+              <th>विषय</th>
+              <th>फोन</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Principal Sir</td>
+              <td>All</td>
+              <td>Office मा सोध्नुहोस्</td>
+            </tr>
+            <tr>
+              <td>Ram Sir</td>
+              <td>Math</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Sita Ma&apos;am</td>
+              <td>English</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>Hari Sir</td>
+              <td>Science</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>???</td>
+              <td>Computer</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 className="section-title">::: बारम्बार सोधिने प्रश्न (FAQ) :::</h2>
+        <div className="box" style={{ marginBottom: 10 }}>
+          <p>
+            <b>Q: भर्ना कहिले खुल्छ?</b>
+            <br />
+            A: अहिले खुला छ। कल आउनुहोस्।
+          </p>
+          <p style={{ marginTop: 8 }}>
+            <b>Q: शुल्क कति हो?</b>
+            <br />
+            A: Office मा सोध्नुहोस्। वेबसाइटमा update भएको छैन।
+          </p>
+          <p style={{ marginTop: 8 }}>
+            <b>Q: Transport छ?</b>
+            <br />
+            A: हो, केही route मा।
+          </p>
+          <p style={{ marginTop: 8 }}>
+            <b>Q: Website कहिले update हुन्छ?</b>
+            <br />
+            A: हामी कोशिस गर्छौं। धन्यवाद।
+          </p>
+        </div>
+
+        <div className="marquee-wrap" style={{ margin: "15px 0" }}>
+          <div className="marquee-inner" style={{ animationDuration: "18s" }}>
+            *** HOT NEWS *** Result published — check notice board *** Tiffin fee due ***
+            Parent meeting Friday *** Don&apos;t forget homework ***
+          </div>
+        </div>
+
+        <h2 className="section-title">::: कसरी आउने? (LOCATION) :::</h2>
+        <div className="img.placeholder" style={{ height: 200 }}>
+          [ GOOGLE MAP — NOT EMBEDDED — PLEASE CALL FOR DIRECTIONS ]
+        </div>
+        <p style={{ fontSize: 12 }}>
+          ठेगाना: ललितपुर, नेपाल (ठ्याक्कै ठेगाना भन्न मिल्दैन — landmark: पुरानो
+          मन्दिर नजिक)
+          <br />
+          <br />
+          <b>सम्पर्क:</b> फोन 01-4XXXXXX | इमेल: info@school.com.np (काम नगर्न सक्छ)
+        </p>
+
+        <div className="side-by-side">
+          <div className="box green">
+            <h3>🏆 हाम्रा उपलब्धिहरू</h3>
+            <ul style={{ paddingLeft: 18, margin: 0, fontSize: 12 }}>
+              <li>District topper 2075 (verify)</li>
+              <li>Football winner 2078</li>
+              <li>100% SLC pass (some years)</li>
+              <li>Best school award (self declared)</li>
+            </ul>
+          </div>
+          <div className="box">
+            <h3>📋 भर्ना कसरी गर्ने?</h3>
+            <ol style={{ paddingLeft: 18, margin: 0, fontSize: 12 }}>
+              <li>विद्यालय आउनुहोस्</li>
+              <li>फर्म भर्नुहोस्</li>
+              <li>पैसा तिर्नुहोस्</li>
+              <li>कक्षामा बस्नुहोस्</li>
+            </ol>
+          </div>
+        </div>
+
+        <div className="img.placeholder" style={{ height: 160 }}>
+          [ GROUP PHOTO — ALL STUDENTS — VERY SMALL FACES ]
+        </div>
 
         <p style={{ fontSize: 12, color: "red", fontWeight: "bold" }}>
           *** Message from Principal: Dear parents and students, our school is the
