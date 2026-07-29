@@ -2,7 +2,7 @@ import { everestImages } from "./images";
 
 export const schoolInfo = {
   name: "Everest International School",
-  tagline: "गुणस्तरीय शिक्षा, सफल भविष्य",
+  tagline: "गुणस्तरीय शिक्षा, उज्ज्वल भविष्य",
   location: "ललितपुर, नेपाल",
   established: "२०७०",
   phone: "+977 01-5XXXXXX",
