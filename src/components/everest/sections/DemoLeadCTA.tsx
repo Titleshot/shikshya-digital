@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Check, FileText } from "lucide-react";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Check, FileText, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { fadeInUp, staggerContainer, defaultViewport } from "@/lib/animations";
 
 const benefits = [
@@ -13,6 +13,7 @@ const benefits = [
 ];
 
 export function DemoLeadCTA() {
+  const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     school: "",
@@ -23,18 +24,38 @@ export function DemoLeadCTA() {
     features: "",
   });
 
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setSubmitted(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const closeModal = () => {
+    setOpen(false);
+    setSubmitted(false);
+  };
+
   return (
     <section
       id="website-proposal"
       className="relative overflow-hidden border-t border-black/5 bg-gradient-to-b from-slate-50 to-white py-24 sm:py-32"
     >
-      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+      <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={defaultViewport}
-          className="text-center"
         >
           <motion.p
             variants={fadeInUp}
@@ -62,31 +83,18 @@ export function DemoLeadCTA() {
             variants={fadeInUp}
             className="mt-4 text-base leading-relaxed text-[var(--everest-muted)]"
           >
-            हामी तपाईंको विद्यालयको आवश्यकता अनुसार{" "}
-            <span className="font-medium text-[var(--everest-navy)]">
-              विशेष Website Proposal, आवश्यक सुविधाहरूको सुझाव र विस्तृत लागत
-              विवरण
-            </span>{" "}
-            तयार गरेर पठाउनेछौं।
-          </motion.p>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-4 text-base font-semibold text-[var(--everest-navy)]"
-          >
-            तलको विवरण भर्नुहोस्। हामी १ कार्यदिवसभित्र Proposal पठाउनेछौं।
+            हामी तपाईंको विद्यालयका लागि व्यक्तिगत Website Proposal र लागत
+            विवरण तयार गरेर पठाउनेछौं।
           </motion.p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={defaultViewport}
-          className="mt-10 rounded-2xl border border-black/5 bg-white p-6 shadow-lg sm:p-8"
+          className="mt-8 rounded-2xl border border-black/5 bg-white p-5 text-left shadow-sm sm:p-6"
         >
-          <h3 className="text-lg font-semibold text-[var(--everest-navy)]">
-            तपाईंले के प्राप्त गर्नुहुनेछ?
-          </h3>
-          <ul className="mt-4 space-y-2.5">
+          <ul className="space-y-2.5">
             {benefits.map((item) => (
               <li
                 key={item}
@@ -97,191 +105,247 @@ export function DemoLeadCTA() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-sm font-medium text-[var(--everest-muted)]">
+          <p className="mt-4 text-sm font-medium text-[var(--everest-muted)]">
             कुनै शुल्क छैन। कुनै बाध्यता छैन।
           </p>
         </motion.div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 24 }}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={defaultViewport}
-          transition={{ delay: 0.1 }}
-          onSubmit={(e) => {
-            e.preventDefault();
-            setSubmitted(true);
-          }}
-          className="mt-8 rounded-2xl border border-black/5 bg-white p-6 shadow-xl sm:p-8"
+          className="mt-10"
         >
-          {submitted ? (
-            <div className="py-8 text-center sm:py-10">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
-                <Check className="h-8 w-8" />
-              </div>
-              <h3 className="text-2xl font-bold text-[var(--everest-navy)]">
-                धन्यवाद!
-              </h3>
-              <p className="mx-auto mt-3 max-w-md text-base text-[var(--everest-muted)]">
-                हामीले तपाईंको अनुरोध प्राप्त गरेका छौं।
-              </p>
-              <div className="mx-auto mt-6 max-w-md rounded-xl bg-slate-50 p-5 text-left">
-                <p className="mb-3 text-sm font-semibold text-[var(--everest-navy)]">
-                  अब के हुन्छ?
-                </p>
-                <ul className="space-y-2.5 text-sm text-[var(--everest-muted)]">
-                  <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                    १ कार्यदिवसभित्र तपाईंको विद्यालयका लागि Customized Proposal
-                    तयार गरिनेछ।
-                  </li>
-                  <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                    Proposal तपाईंको WhatsApp र Email मा पठाइनेछ।
-                  </li>
-                  <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                    कुनै शुल्क छैन।
-                  </li>
-                  <li className="flex gap-2">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
-                    कुनै बाध्यता छैन।
-                  </li>
-                </ul>
-              </div>
-              <p className="mt-6 text-sm text-[var(--everest-muted)]">धन्यवाद।</p>
-            </div>
-          ) : (
-            <>
-              <h3 className="mb-6 text-lg font-semibold text-[var(--everest-navy)]">
-                तलको विवरण भर्नुहोस्
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <label
-                    htmlFor="lead-school"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    विद्यालयको नाम *
-                  </label>
-                  <input
-                    id="lead-school"
-                    required
-                    value={form.school}
-                    onChange={(e) =>
-                      setForm({ ...form, school: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                    placeholder="तपाईंको विद्यालयको नाम"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lead-contact"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    सम्पर्क व्यक्तिको नाम *
-                  </label>
-                  <input
-                    id="lead-contact"
-                    required
-                    value={form.contact}
-                    onChange={(e) =>
-                      setForm({ ...form, contact: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                    placeholder="Principal / Admin को नाम"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lead-phone"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    मोबाइल नम्बर *
-                  </label>
-                  <input
-                    id="lead-phone"
-                    type="tel"
-                    required
-                    value={form.phone}
-                    onChange={(e) =>
-                      setForm({ ...form, phone: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                    placeholder="९८XXXXXXXX"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lead-email"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    इमेल ठेगाना
-                  </label>
-                  <input
-                    id="lead-email"
-                    type="email"
-                    value={form.email}
-                    onChange={(e) =>
-                      setForm({ ...form, email: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                    placeholder="email@example.com"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lead-has-website"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    हाल Website छ?
-                  </label>
-                  <select
-                    id="lead-has-website"
-                    value={form.hasWebsite}
-                    onChange={(e) =>
-                      setForm({ ...form, hasWebsite: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                  >
-                    <option value="">छान्नुहोस्</option>
-                    <option value="yes">छ</option>
-                    <option value="no">छैन</option>
-                  </select>
-                </div>
-                <div>
-                  <label
-                    htmlFor="lead-features"
-                    className="mb-1.5 block text-sm text-[var(--everest-muted)]"
-                  >
-                    तपाईंलाई Website मा चाहिने विशेष सुविधाहरू (इच्छानुसार)
-                  </label>
-                  <textarea
-                    id="lead-features"
-                    rows={3}
-                    value={form.features}
-                    onChange={(e) =>
-                      setForm({ ...form, features: e.target.value })
-                    }
-                    className="w-full resize-none rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
-                    placeholder="जस्तै: भर्ना फर्म, ग्यालेरी, सूचना बोर्ड..."
-                  />
-                </div>
-              </div>
-
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--everest-navy)] py-4 font-semibold text-white shadow-lg"
-              >
-                <FileText className="h-4 w-4" />
-                मेरो विद्यालयको Website Proposal प्राप्त गर्नुहोस्
-              </motion.button>
-            </>
-          )}
-        </motion.form>
+          <motion.button
+            type="button"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            onClick={() => {
+              setSubmitted(false);
+              setOpen(true);
+            }}
+            className="inline-flex w-full max-w-md items-center justify-center gap-2 rounded-full bg-[var(--everest-navy)] px-8 py-4 text-base font-semibold text-white shadow-xl shadow-[var(--everest-navy)]/25 sm:w-auto"
+          >
+            <FileText className="h-5 w-5" />
+            मेरो विद्यालयको Proposal तयार गर्नुहोस्
+          </motion.button>
+          <p className="mt-4 text-sm text-[var(--everest-muted)]">
+            ⏱️ १ मिनेटभन्दा कम समय लाग्छ।
+          </p>
+          <p className="mt-1 text-sm text-[var(--everest-muted)]">
+            📩 Proposal १ कार्यदिवसभित्र WhatsApp र Email मा पठाइनेछ।
+          </p>
+        </motion.div>
       </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-4"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 24, scale: 0.98 }}
+              transition={{ type: "spring", damping: 26, stiffness: 280 }}
+              className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white shadow-2xl sm:rounded-3xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                type="button"
+                aria-label="बन्द गर्नुहोस्"
+                onClick={closeModal}
+                className="absolute right-4 top-4 z-10 rounded-full bg-black/5 p-2 text-[var(--everest-navy)] transition hover:bg-black/10"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              {submitted ? (
+                <div className="p-8 text-center sm:p-10">
+                  <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                    <Check className="h-8 w-8" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[var(--everest-navy)]">
+                    धन्यवाद!
+                  </h3>
+                  <p className="mt-3 text-[var(--everest-muted)]">
+                    हामीले तपाईंको अनुरोध प्राप्त गरेका छौं।
+                  </p>
+                  <div className="mt-6 rounded-xl bg-slate-50 p-5 text-left">
+                    <p className="mb-3 text-sm font-semibold text-[var(--everest-navy)]">
+                      अब के हुन्छ?
+                    </p>
+                    <ul className="space-y-2.5 text-sm text-[var(--everest-muted)]">
+                      <li className="flex gap-2">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        १ कार्यदिवसभित्र Customized Proposal तयार गरिनेछ।
+                      </li>
+                      <li className="flex gap-2">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        Proposal WhatsApp र Email मा पठाइनेछ।
+                      </li>
+                      <li className="flex gap-2">
+                        <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                        कुनै शुल्क छैन। कुनै बाध्यता छैन।
+                      </li>
+                    </ul>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="mt-6 rounded-full bg-[var(--everest-navy)] px-8 py-3 text-sm font-semibold text-white"
+                  >
+                    बन्द गर्नुहोस्
+                  </button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSubmitted(true);
+                  }}
+                  className="p-6 sm:p-8"
+                >
+                  <h3 className="pr-10 text-xl font-bold text-[var(--everest-navy)]">
+                    Website Proposal अनुरोध
+                  </h3>
+                  <p className="mt-1 text-sm text-[var(--everest-muted)]">
+                    तलको विवरण भर्नुहोस् — १ मिनेटभन्दा कम समय लाग्छ।
+                  </p>
+
+                  <div className="mt-6 space-y-4">
+                    <div>
+                      <label
+                        htmlFor="modal-school"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        विद्यालयको नाम *
+                      </label>
+                      <input
+                        id="modal-school"
+                        required
+                        value={form.school}
+                        onChange={(e) =>
+                          setForm({ ...form, school: e.target.value })
+                        }
+                        className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                        placeholder="तपाईंको विद्यालयको नाम"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="modal-contact"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        Principal / Admin *
+                      </label>
+                      <input
+                        id="modal-contact"
+                        required
+                        value={form.contact}
+                        onChange={(e) =>
+                          setForm({ ...form, contact: e.target.value })
+                        }
+                        className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                        placeholder="सम्पर्क व्यक्तिको नाम"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="modal-phone"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        Mobile Number *
+                      </label>
+                      <input
+                        id="modal-phone"
+                        type="tel"
+                        required
+                        value={form.phone}
+                        onChange={(e) =>
+                          setForm({ ...form, phone: e.target.value })
+                        }
+                        className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                        placeholder="९८XXXXXXXX"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="modal-email"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        Email
+                      </label>
+                      <input
+                        id="modal-email"
+                        type="email"
+                        value={form.email}
+                        onChange={(e) =>
+                          setForm({ ...form, email: e.target.value })
+                        }
+                        className="w-full rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                        placeholder="email@example.com"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="modal-has-website"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        हाल Website छ?
+                      </label>
+                      <select
+                        id="modal-has-website"
+                        value={form.hasWebsite}
+                        onChange={(e) =>
+                          setForm({ ...form, hasWebsite: e.target.value })
+                        }
+                        className="w-full rounded-xl border border-black/10 bg-white px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                      >
+                        <option value="">छान्नुहोस्</option>
+                        <option value="yes">छ</option>
+                        <option value="no">छैन</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor="modal-features"
+                        className="mb-1.5 block text-sm text-[var(--everest-muted)]"
+                      >
+                        विशेष आवश्यकता
+                      </label>
+                      <textarea
+                        id="modal-features"
+                        rows={3}
+                        value={form.features}
+                        onChange={(e) =>
+                          setForm({ ...form, features: e.target.value })
+                        }
+                        className="w-full resize-none rounded-xl border border-black/10 px-4 py-3 outline-none focus:border-[var(--everest-teal)] focus:ring-2 focus:ring-[var(--everest-teal)]/20"
+                        placeholder="जस्तै: भर्ना फर्म, ग्यालेरी, सूचना बोर्ड..."
+                      />
+                    </div>
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--everest-navy)] py-4 font-semibold text-white shadow-lg"
+                  >
+                    <FileText className="h-4 w-4" />
+                    Proposal पठाइदिनुहोस्
+                  </motion.button>
+                </form>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
