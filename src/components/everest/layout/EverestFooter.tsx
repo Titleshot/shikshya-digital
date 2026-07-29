@@ -62,7 +62,7 @@ export function EverestFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} {schoolInfo.name}. सर्वाधिकार सुरक्षित। | Demo by Shikshya Digital
+        © {new Date().getFullYear()} {schoolInfo.name}. सर्वाधिकार सुरक्षित।
       </div>
     </footer>
   );

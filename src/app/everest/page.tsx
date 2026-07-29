@@ -9,6 +9,7 @@ import { Gallery } from "@/components/everest/sections/Gallery";
 import { Testimonials } from "@/components/everest/sections/Testimonials";
 import { News } from "@/components/everest/sections/News";
 import { EverestFinalCTA } from "@/components/everest/sections/EverestFinalCTA";
+import { DemoLeadCTA } from "@/components/everest/sections/DemoLeadCTA";
 
 export default function EverestPage() {
   return (
@@ -24,6 +25,7 @@ export default function EverestPage() {
       <News />
       <Admission />
       <EverestFinalCTA />
+      <DemoLeadCTA />
     </>
   );
 }

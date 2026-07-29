@@ -47,13 +47,7 @@ export function EverestHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 sm:flex">
-          <Link
-            href="/"
-            className="text-xs text-[var(--everest-muted)] transition hover:text-[var(--everest-navy)]"
-          >
-            ← Shikshya Digital
-          </Link>
+        <div className="hidden sm:block">
           <Link
             href="#admission"
             className="rounded-full bg-[var(--everest-navy)] px-5 py-2.5 text-sm font-medium text-white shadow-md transition hover:bg-[var(--everest-navy-light)]"
