@@ -87,12 +87,12 @@ export const facilities = [
 ] as const;
 
 export const galleryItems = [
-  { title: "वार्षिक दिवस", image: everestImages.galleryAnnual },
+  { title: "वार्षिक दिवस", image: everestImages.activities },
   { title: "पुरस्कार समारोह", image: everestImages.galleryAward },
   { title: "खेलकुद दिवस", image: everestImages.gallerySports },
   { title: "कक्षाकोठा सिकाइ", image: everestImages.about },
   { title: "विज्ञान प्रयोग", image: everestImages.scienceExperiment },
-  { title: "सांस्कृतिक कार्यक्रम", image: everestImages.activities },
+  { title: "सांस्कृतिक कार्यक्रम", image: everestImages.galleryAnnual },
 ] as const;
 
 export const testimonials = [
