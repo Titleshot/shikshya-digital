@@ -62,7 +62,16 @@ export function EverestFooter() {
         </div>
       </div>
       <div className="border-t border-white/10 py-5 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} {schoolInfo.name}. सर्वाधिकार सुरक्षित।
+        <p>
+          © {new Date().getFullYear()} {schoolInfo.name}. सर्वाधिकार सुरक्षित।
+        </p>
+        <p className="mt-2 text-white/60">
+          यो Live Demo Website{" "}
+          <span className="font-medium text-[var(--everest-gold)]">
+            Revora Technologies
+          </span>{" "}
+          द्वारा तयार गरिएको हो।
+        </p>
       </div>
     </footer>
   );

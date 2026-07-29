@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, Send } from "lucide-react";
+import { Check, FileText } from "lucide-react";
 import { useState } from "react";
 import { fadeInUp, staggerContainer, defaultViewport } from "@/lib/animations";
 
 const benefits = [
-  "तपाईंको विद्यालयका लागि विशेष Website Proposal",
-  "आवश्यक सुविधाहरूको सुझाव",
-  "Website तयार हुने अनुमानित समय",
+  "तपाईंको विद्यालयका लागि Customized Website Proposal",
+  "आवश्यक Features को सुझाव",
+  "Website तयार हुने समय",
   "विस्तृत लागत विवरण",
 ];
 
@@ -46,34 +46,34 @@ export function DemoLeadCTA() {
             variants={fadeInUp}
             className="text-3xl font-bold leading-snug tracking-tight text-[var(--everest-navy)] sm:text-4xl"
           >
-            के तपाईं आफ्नो विद्यालयका लागि यस्तै आधुनिक Website चाहनुहुन्छ?
+            के तपाईंको विद्यालयका लागि पनि यस्तै Website चाहनुहुन्छ?
           </motion.h2>
           <motion.p
             variants={fadeInUp}
             className="mt-5 text-base leading-relaxed text-[var(--everest-muted)] sm:text-lg"
           >
-            यो Website केवल एउटा Live Demo हो, जसले हामीले तपाईंको विद्यालयका लागि
-            बनाउन सक्ने Website को गुणस्तर देखाउँछ।
+            यो Website केवल एउटा{" "}
+            <span className="font-semibold text-[var(--everest-navy)]">
+              Live Demo
+            </span>{" "}
+            हो।
           </motion.p>
           <motion.p
             variants={fadeInUp}
             className="mt-4 text-base leading-relaxed text-[var(--everest-muted)]"
           >
-            यदि तपाईं पनि आफ्नो विद्यालयका लागि यस्तै आकर्षक, आधुनिक र मोबाइलमै
-            उत्कृष्ट देखिने Website चाहनुहुन्छ भने तलको विवरण भर्नुहोस्।
+            हामी तपाईंको विद्यालयको आवश्यकता अनुसार{" "}
+            <span className="font-medium text-[var(--everest-navy)]">
+              विशेष Website Proposal, आवश्यक सुविधाहरूको सुझाव र विस्तृत लागत
+              विवरण
+            </span>{" "}
+            तयार गरेर पठाउनेछौं।
           </motion.p>
           <motion.p
             variants={fadeInUp}
-            className="mt-4 text-base font-medium leading-relaxed text-[var(--everest-navy)]"
+            className="mt-4 text-base font-semibold text-[var(--everest-navy)]"
           >
-            हामी तपाईंको विद्यालयका लागि Website को योजना, आवश्यक सुविधा र लागत
-            विवरण तयार गरेर पठाउनेछौं।
-          </motion.p>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-1 text-sm text-[var(--everest-muted)]"
-          >
-            (Website Proposal & Quotation)
+            तलको विवरण भर्नुहोस्। हामी १ कार्यदिवसभित्र Proposal पठाउनेछौं।
           </motion.p>
         </motion.div>
 
@@ -97,8 +97,8 @@ export function DemoLeadCTA() {
               </li>
             ))}
           </ul>
-          <p className="mt-5 text-sm text-[var(--everest-muted)]">
-            कुनै शुल्क छैन, कुनै बाध्यता छैन।
+          <p className="mt-5 text-sm font-medium text-[var(--everest-muted)]">
+            कुनै शुल्क छैन। कुनै बाध्यता छैन।
           </p>
         </motion.div>
 
@@ -114,21 +114,41 @@ export function DemoLeadCTA() {
           className="mt-8 rounded-2xl border border-black/5 bg-white p-6 shadow-xl sm:p-8"
         >
           {submitted ? (
-            <div className="py-10 text-center">
+            <div className="py-8 text-center sm:py-10">
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
                 <Check className="h-8 w-8" />
               </div>
               <h3 className="text-2xl font-bold text-[var(--everest-navy)]">
                 धन्यवाद!
               </h3>
-              <p className="mx-auto mt-4 max-w-md text-base leading-relaxed text-[var(--everest-muted)]">
-                हामीले तपाईंको अनुरोध सफलतापूर्वक प्राप्त गरेका छौं।
+              <p className="mx-auto mt-3 max-w-md text-base text-[var(--everest-muted)]">
+                हामीले तपाईंको अनुरोध प्राप्त गरेका छौं।
               </p>
-              <p className="mx-auto mt-3 max-w-md text-sm leading-relaxed text-[var(--everest-muted)]">
-                १ कार्यदिवसभित्र तपाईंको विद्यालयका लागि तयार गरिएको व्यक्तिगत
-                Website Proposal र लागत विवरण तपाईंको WhatsApp र Email मा
-                पठाइनेछ।
-              </p>
+              <div className="mx-auto mt-6 max-w-md rounded-xl bg-slate-50 p-5 text-left">
+                <p className="mb-3 text-sm font-semibold text-[var(--everest-navy)]">
+                  अब के हुन्छ?
+                </p>
+                <ul className="space-y-2.5 text-sm text-[var(--everest-muted)]">
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                    १ कार्यदिवसभित्र तपाईंको विद्यालयका लागि Customized Proposal
+                    तयार गरिनेछ।
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                    Proposal तपाईंको WhatsApp र Email मा पठाइनेछ।
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                    कुनै शुल्क छैन।
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                    कुनै बाध्यता छैन।
+                  </li>
+                </ul>
+              </div>
+              <p className="mt-6 text-sm text-[var(--everest-muted)]">धन्यवाद।</p>
             </div>
           ) : (
             <>
@@ -255,8 +275,8 @@ export function DemoLeadCTA() {
                 whileTap={{ scale: 0.98 }}
                 className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--everest-navy)] py-4 font-semibold text-white shadow-lg"
               >
-                <Send className="h-4 w-4" />
-                मेरो विद्यालयको Proposal तयार गर्नुहोस्
+                <FileText className="h-4 w-4" />
+                मेरो विद्यालयको Website Proposal प्राप्त गर्नुहोस्
               </motion.button>
             </>
           )}
