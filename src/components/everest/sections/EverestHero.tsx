@@ -32,7 +32,7 @@ export function EverestHero() {
             className="mt-4 text-4xl font-bold leading-[1.12] tracking-tight text-[var(--everest-navy)] sm:text-5xl lg:text-6xl"
           >
             तपाईंको बच्चाको{" "}
-            <span className="everest-gradient-text">उज्ज्वल भविष्य</span> यहाँबाट सुरु
+            <span className="everest-gradient-text">सफल भविष्य</span> यहाँबाट सुरु
             हुन्छ
           </motion.h1>
           <motion.p
