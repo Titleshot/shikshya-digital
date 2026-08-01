@@ -15,14 +15,8 @@ const WHATSAPP_NUMBER = "9779808910568";
 
 const whatsappMessage = encodeURIComponent(
   `नमस्कार Revora Technologies,
-
-म Everest School को Live Demo Website हेरेर आएँ।
-
-हाम्रो विद्यालयका लागि पनि यस्तै आधुनिक Website को Proposal र लागत विवरण पठाइदिनुहोस्।
-
-विद्यालयको नाम:
-सम्पर्क व्यक्ति:
-मोबाइल:`
+म School Website Demo हेरेर आएँ।
+हाम्रो विद्यालयका लागि यस्तै Website को Proposal र लागत विवरण पठाइदिनुहोस्। धन्यवाद।`
 );
 
 const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
